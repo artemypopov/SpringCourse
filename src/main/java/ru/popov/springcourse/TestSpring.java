@@ -7,45 +7,13 @@ public class TestSpring {
         ClassPathXmlApplicationContext context
                 = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        ClassicalMusic classicalMusic = context.getBean("musicBean2", ClassicalMusic.class);
-        System.out.println(classicalMusic.getSong());
+        Music rockMusic = context.getBean("rockBean", Music.class);
+        MusicPlayer rockMusicPlayer = new MusicPlayer(rockMusic);
+        rockMusicPlayer.playMusic();
 
-        RockMusic rockMusic1 = context.getBean("musicBean1", RockMusic.class);
-        RockMusic rockMusic2 = context.getBean("musicBean1", RockMusic.class);
-
-        System.out.println(rockMusic1.getSong());
-        System.out.println(rockMusic2.getSong());
-
-        RapMusic rapMusic1 = context.getBean("musicBean3", RapMusic.class);
-        RapMusic rapMusic2 = context.getBean("musicBean3", RapMusic.class);
-
-        System.out.println(rapMusic1.getSong());
-        System.out.println(rapMusic2.getSong());
-//        TestBean testBean = context.getBean("testBean", TestBean.class);
-//
-//        System.out.println(testBean.getName());
-
-//        Music music = context.getBean("musicBean", Music.class);
-
-//        MusicPlayer musicPlayer = new MusicPlayer(music);
-
-//        MusicPlayer firstMusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-//        MusicPlayer secondMusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-//
-//        boolean comparison = firstMusicPlayer == secondMusicPlayer;
-//        System.out.println(comparison);
-//
-//        System.out.println(firstMusicPlayer);
-//        System.out.println(secondMusicPlayer);
-//
-//        firstMusicPlayer.setVolume(10);
-//
-//        System.out.println(firstMusicPlayer.getVolume());
-//        System.out.println(secondMusicPlayer.getVolume());
-
-//        musicPlayer.playMusic();
-//        System.out.println(musicPlayer.getName());
-//        System.out.println(musicPlayer.getVolume());
+        Music classicalMusic = context.getBean("classicalBean", Music.class);
+        MusicPlayer classicalMusicPlayer = new MusicPlayer(classicalMusic);
+        classicalMusicPlayer.playMusic();
 
         context.close();
 
