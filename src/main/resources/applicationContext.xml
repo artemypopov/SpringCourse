@@ -8,29 +8,41 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
-
+<!--
     <bean id="testBean"
         class="ru.popov.springcourse.TestBean">
         <constructor-arg value="Artemy"/>
     </bean>
-
+-->
     <bean id="musicBean1"
-          class="ru.popov.springcourse.RockMusic">
+          class="ru.popov.springcourse.RockMusic"
+          scope="prototype"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
     </bean>
 
     <bean id="musicBean2"
-          class="ru.popov.springcourse.ClassicalMusic">
+          class="ru.popov.springcourse.ClassicalMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy"
+          factory-method="getClassicalMusic">
     </bean>
 
     <bean id="musicBean3"
-          class="ru.popov.springcourse.RockMusic">
+          class="ru.popov.springcourse.RapMusic"
+          scope="prototype"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
     </bean>
+
 <!--
     <bean id="musicPlayer"
           class="ru.popov.springcourse.MusicPlayer">
         <constructor-arg ref="musicBean"/>
     </bean>
 -->
+
+<!--
     <bean id="musicPlayer"
           class="ru.popov.springcourse.MusicPlayer"
           scope="prototype">
@@ -45,4 +57,5 @@
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
+-->
 </beans>
