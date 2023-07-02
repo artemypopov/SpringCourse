@@ -1,9 +1,16 @@
 package ru.popov.springcourse;
 
-public class RapMusic implements Music {
+import java.util.List;
 
+public class RapMusic implements Music {
     @Override
-    public String getSong() {
-        return "RapMusic";
+    public List<String> getSong() {
+        return null;
     }
+
+
+//    @Override
+//    public String getSong() {
+//        return "RapMusic";
+//    }
 }
