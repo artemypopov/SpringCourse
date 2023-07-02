@@ -2,6 +2,7 @@ package ru.popov.springcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,6 +15,19 @@ public class MusicPlayer {
 //    @Qualifier("classicalBean")
     private Music musicClassic;
     private Music musicRock;
+
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
 
     public MusicPlayer(@Qualifier("classicalBean") Music musicClassic,
                        @Qualifier("rockBean") Music musicRock) {
